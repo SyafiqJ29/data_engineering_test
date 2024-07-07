@@ -1,0 +1,58 @@
+SQL commands
+
+UPDATE bond_reference
+SET "MATURITY DATE" = to_date("MATURITY DATE", 'DD/MM/YYYY')::date;
+
+
+UPDATE equity_prices
+SET "DATETIME" = to_date("DATETIME", 'MM/DD/YYYY')::date;
+
+
+
+CREATE TABLE IF NOT EXISTS "funds" (
+	"FINANCIAL TYPE"	TEXT,
+	"SYMBOL"	TEXT,
+	"SECURITY NAME"	TEXT,
+	"SEDOL"	TEXT,
+	"PRICE"	REAL,
+	"QUANTITY"	TEXT,
+	"REALISED P/L"	TEXT,
+	"MARKET VALUE"	TEXT,
+	"FUND NAME"	TEXT,
+	"FUND DATE"	TEXT
+
+);
+
+CREATE TABLE IF NOT EXISTS "eom_report" (
+	"SECURITY NAME"	TEXT,
+	"FINANCIAL TYPE"	TEXT,
+	"SYMBOL"	TEXT,
+	"ISIN"	TEXT,
+	"FUND_PRICE"	REAL,
+	"REF_PRICE"	REAL,
+	"PRICE DIFF"	REAL,
+	"DATETIME"	DATETIME
+
+);
+
+
+-- diff price null issue. these don't have ref price
+
+SELECT * FROM equity_prices bp
+Where "SYMBOL" in(
+Select "SYMBOL" from eom_report
+where "REF_PRICE" is NULL)
+
+-- Requirement 4
+
+CREATE VIEW monthly_fund_performance AS
+SELECT 
+  f."FUND NAME",  extract(year from "FUND DATE") AS year,
+  extract(month from "FUND DATE") AS month,
+   SUM(CASE WHEN f."FINANCIAL TYPE" = 'Equity' THEN 
+         CAST(f."REALISED P/L" AS REAL) 
+       ELSE 0 END) AS equity_profit_loss
+FROM funds f
+GROUP BY f."FUND NAME", extract(year from "FUND DATE"), extract(month from "FUND DATE");
+
+

@@ -1,0 +1,9 @@
+{
+  "db_name": "postgres",
+  "db_username": "postgres",
+  "db_password": "superuser1",
+  "db_host": "localhost",
+  "db_port":"5432",
+  "csv_folder_path":"C:\\Users\\syafi\\Downloads\\external-funds"
+
+}

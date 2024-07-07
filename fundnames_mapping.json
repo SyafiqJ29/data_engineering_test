@@ -1,0 +1,12 @@
+{
+  "Applebead": ["Applebead","%d-%m-%Y"],
+  "Belaware": ["Belaware","%d_%m_%Y"],
+  "Fund Whitestone": ["Whitestone","%d-%m-%Y"],
+  "Leeder": ["Leeder","%m_%d_%Y"],
+  "Magnum": ["Magnum","%d-%m-%Y"],
+  "mend-report Wallington": ["Wallington","%d_%m_%Y"],
+  "Report-of-Gohen": ["Gohen","%m-%d-%Y"],
+  "rpt-Catalysm": ["Catalysm","%Y-%m-%d"],
+  "TT_monthly_Trustmind": ["Trustmind","%Y%m%d"],
+  "Virtous": ["Virtous","%m-%d-%Y"]
+}

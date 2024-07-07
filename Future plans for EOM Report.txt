@@ -1,0 +1,7 @@
+Describe how can make it scalable for `N` number of fund reports in future.
+
+For future additions of funds, 
+ - funds csvs have to be SFTP into the same folder folder for consumption of data.
+ - naming convention has to be followed
+ - fund names have to be added to the fundnames_mapping.json including date format in the filename
+ - script to be run by scheduler passing end dates as parameters
